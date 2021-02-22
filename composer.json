@@ -8,6 +8,6 @@
     },
 
     "autoload": {
-        "files": ["config/database/database.php"]
+        "classmap": ["config/database", "database.php"]
     }
 }
