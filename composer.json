@@ -8,7 +8,7 @@
     },
 
     "autoload": {
-        "classmap": ["config/database", "database.php"]
+        "classmap": ["config/database"]
     },
 
     "license": [
