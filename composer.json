@@ -1,0 +1,9 @@
+{
+    "name": "simpledatabase/simple-database",
+    "description": "Simple Database API for PHP and SQL",
+    "version": "0.0.1-dev",
+
+    "require" :{
+        "php" : ">=7.0"
+    }
+}
