@@ -1,6 +1,6 @@
 <?php
     //Disable Default errors
-    //error_reporting(0);
+    error_reporting(0);
 
     //Require insert
     require("insert.php");
@@ -125,6 +125,14 @@
             }
         }
 
+        function verifyPassword($hashed, $input){
+            if(password_verify($input, $hashed)){
+                return(1);
+            }else{
+                return false;
+            }
+        }
+
         function closeConnection(){
             if($this->conn){
                 if($this->conn->close()){
@@ -132,6 +140,18 @@
                 }else{
                     die("Something went wrong in closing the SQL connection!");
                 }
+            }
+        }
+
+        function query($query){
+            if($this->conn){
+                if($result = $this->conn->query($query)){
+                    return $result;
+                }else{
+                    die("<p style='color:red'>Query failed. The error is:<b> " . $this->conn->error ."</b></p>");
+                }
+            }else{
+                die("<p style='color:red'>Query failed. No connection found. First connect using \$database->connect()");
             }
         }
 

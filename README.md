@@ -6,7 +6,7 @@
 
 ## Code Samples
 
-> Full Documentation can be found here: https://docs.google.com/document/d/1eufGXHW__C4uOW9Lr9XoAAzOX8vFrd5qNAytYAM4VgQ/edit?usp=sharing
+> Full Documentation can be found here: http://example.com/
 
 > <b>Connect to database</b><br><br>
 > You can simply connect to your database using the following 2 lines of code.
