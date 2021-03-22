@@ -57,11 +57,11 @@
             }
         }
 
-        function readAll($table = null){
+        function readAll($table, $limit = null){
             if(isset($table)){
                 if($this->conn){
                     $read = new Read($this->conn, $table);
-                    return $read->readAll();
+                    return $read->readAll($limit);
                 }else{
                     die("<p style='color:red'>Read failed. No connection found. First connect using \$database->connect()"); 
                 }
@@ -70,11 +70,11 @@
             }
         }
 
-        function readById($table = null, $id = null){
+        function readById($table = null, $id = null, $limit = null){
             if(isset($table) && isset($id)){
                 if($this->conn){
                     $read = new Read($this->conn, $table);
-                    return $read->readFromId($id);
+                    return $read->readFromId($id, $limit);
                 }else{
                     die("<p style='color:red'>Read failed. No connection found. First connect using \$database->connect()"); 
                 }
@@ -83,11 +83,11 @@
             }
         }
 
-        function readByRow($table = null, $row = null, $value = null){
+        function readByRow($table = null, $row = null, $value = null, $limit = null){
             if(isset($table) && isset($row) && isset($value)){
                 if($this->conn){
                     $read = new Read($this->conn, $table);
-                    return $read->readFromRow($row, $value);
+                    return $read->readFromRow($row, $value, $limit);
                 }else{
                     die("<p style='color:red'>Read failed. No connection found. First connect using \$database->connect()"); 
                 }
@@ -150,6 +150,14 @@
                 }else{
                     die("<p style='color:red'>Query failed. The error is:<b> " . $this->conn->error ."</b></p>");
                 }
+            }else{
+                die("<p style='color:red'>Query failed. No connection found. First connect using \$database->connect()");
+            }
+        }
+
+        function escape($value){
+            if($this->conn){
+                return $this->conn->real_escape_string($value);
             }else{
                 die("<p style='color:red'>Query failed. No connection found. First connect using \$database->connect()");
             }
